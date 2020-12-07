@@ -5,7 +5,7 @@ import java.util.Random;
 public class Spawner {
   private Handler handler;
   private HUD hud;
-  private Random randomNumber = new Random();
+  private Random random = new Random();
 
   private int scoreKeep = 0;
 
@@ -26,36 +26,36 @@ public class Spawner {
       if (hud.getLevel() == 2) {
         handler.addObject(
             new BasicEnemy(
-                randomNumber.nextInt(Game.WIDTH) - 32,
-                randomNumber.nextInt(Game.HEIGHT) - 32,
+                random.nextInt(Game.WIDTH) - 32,
+                random.nextInt(Game.HEIGHT) - 32,
                 ID.BasicEnemy,
                 handler));
         handler.addObject(
             new fastEnemy(
-                randomNumber.nextInt(Game.WIDTH) - 32,
-                randomNumber.nextInt(Game.HEIGHT) - 32,
+                random.nextInt(Game.WIDTH) - 32,
+                random.nextInt(Game.HEIGHT) - 32,
                 ID.fastEnemy,
                 handler));
       }
       if (hud.getLevel() == 3) {
         handler.addObject(
             new SmartEnemy(
-                randomNumber.nextInt(Game.WIDTH) - 32,
-                randomNumber.nextInt(Game.HEIGHT) - 32,
+                random.nextInt(Game.WIDTH) - 32,
+                random.nextInt(Game.HEIGHT) - 32,
                 ID.SmartEnemy,
                 handler));
       }
       if (hud.getLevel() == 5) {
         handler.addObject(
             new SmartEnemy(
-                randomNumber.nextInt(Game.WIDTH) - 32,
-                randomNumber.nextInt(Game.HEIGHT) - 32,
+                random.nextInt(Game.WIDTH) - 32,
+                random.nextInt(Game.HEIGHT) - 32,
                 ID.SmartEnemy,
                 handler));
         handler.addObject(
             new fastEnemy(
-                randomNumber.nextInt(Game.WIDTH) - 32,
-                randomNumber.nextInt(Game.HEIGHT) - 32,
+                random.nextInt(Game.WIDTH) - 32,
+                random.nextInt(Game.HEIGHT) - 32,
                 ID.fastEnemy,
                 handler));
       }

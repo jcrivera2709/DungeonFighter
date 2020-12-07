@@ -30,9 +30,9 @@ public class BasicEnemy extends GameObject {
 	}
 
 
-	public void render(Graphics g) {
-		g.setColor(Color.red);	
-		g.fillRect((int)x, (int)y, 16, 16);
+	public void render(Graphics graphics) {
+		graphics.setColor(Color.red);
+		graphics.fillRect((int)x, (int)y, 16, 16);
 	}
 
 }

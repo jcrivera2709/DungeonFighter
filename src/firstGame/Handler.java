@@ -14,10 +14,10 @@ public class Handler {
 		}
 	}
 
-	public void render(Graphics g) {
+	public void render(Graphics graphics) {
 		for(int i = 0; i < object.size(); i++) {
 			GameObject tempObject = object.get(i);
-			tempObject.render(g);
+			tempObject.render(graphics);
 		}
 	}
 

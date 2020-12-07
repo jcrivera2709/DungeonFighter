@@ -42,23 +42,26 @@ public class Bullet extends GameObject {
     }
   }
 
+  /**
+   * If bullet collides with enemy it will give health to the player.
+   */
   private void collision() {
     for (int i = 0; i < handler.object.size(); i++) {
-      GameObject tempObject = handler.object.get(i);
+      GameObject enemyObject = handler.object.get(i);
 
-      if (tempObject.getID() == ID.BasicEnemy
-          || tempObject.getID() == ID.fastEnemy
-          || tempObject.getID() == ID.SmartEnemy) {
-        if (getBounds().intersects(tempObject.getBounds())) {
+      if (enemyObject.getID() == ID.BasicEnemy
+          || enemyObject.getID() == ID.fastEnemy
+          || enemyObject.getID() == ID.SmartEnemy) {
+        if (getBounds().intersects(enemyObject.getBounds())) {
           HUD.HEALTH += 1;
         }
       }
     }
   }
 
-  public void render(Graphics g) {
-    g.setColor(Color.white);
-    g.fillRect((int) x, (int) y, 10, 10);
+  public void render(Graphics graphics) {
+    graphics.setColor(Color.white);
+    graphics.fillRect((int) x, (int) y, 10, 10);
   }
 
   public Rectangle getBounds() {

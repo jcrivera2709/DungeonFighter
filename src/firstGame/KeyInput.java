@@ -58,8 +58,8 @@ public class KeyInput extends KeyAdapter {
     if (key == KeyEvent.VK_ESCAPE) System.exit(1);
   }
 
-  public void keyReleased(KeyEvent e) {
-    int key = e.getKeyCode();
+  public void keyReleased(KeyEvent keyEvent) {
+    int key = keyEvent.getKeyCode();
 
     for (int i = 0; i < handler.object.size(); i++) {
       GameObject tempObject = handler.object.get(i);

@@ -12,7 +12,7 @@ public class Menu extends MouseAdapter {
   private Game game;
   private Handler handler;
   private HUD hud;
-  private Random randomNumber = new Random();
+  private Random random = new Random();
 
   public Menu(Game game, Handler handler, HUD hud) {
     this.game = game;
@@ -20,9 +20,9 @@ public class Menu extends MouseAdapter {
     this.hud = hud;
   }
 
-  public void mousePressed(MouseEvent e) {
-    int mx = e.getX();
-    int my = e.getY();
+  public void mousePressed(MouseEvent mouseEvent) {
+    int mx = mouseEvent.getX();
+    int my = mouseEvent.getY();
 
     // options at the menu and what they do when you press them
     if (Game.gameState == STATE.Menu) {
@@ -34,8 +34,8 @@ public class Menu extends MouseAdapter {
             new Player(Game.WIDTH / 2 - 32, Game.HEIGHT / 2 - 32, ID.Player, handler));
         handler.addObject(
             new BasicEnemy(
-                randomNumber.nextInt(Game.WIDTH) - 32,
-                randomNumber.nextInt(Game.HEIGHT) - 32,
+                random.nextInt(Game.WIDTH) - 32,
+                random.nextInt(Game.HEIGHT) - 32,
                 ID.BasicEnemy,
                 handler));
       }
@@ -70,75 +70,78 @@ public class Menu extends MouseAdapter {
     }
   }
 
-  public void mouseReleased(MouseEvent e) {}
+  public void mouseReleased(MouseEvent mouseEvent) {}
 
-  private boolean mouseOver(int mx, int my, int y) {
-    if (mx > 315 && mx < 315 + 200) {
-        return my > y && my < y + 64;
+  private boolean mouseOver(int mouseX, int mouseY, int y) {
+    if (mouseX > 315 && mouseX < 315 + 200) {
+        return mouseY > y && mouseY < y + 64;
     } else return false;
   }
 
   public void tick() {}
 
-  public void render(Graphics g) {
+  /**
+   * Renders the main menu screen with the multiple options.
+   */
+  public void render(Graphics graphics) {
     if (Game.gameState == STATE.Menu) {
       Font titleFont = new Font("arial", Font.BOLD, 50);
       Font boxText = new Font("arial", Font.BOLD, 30);
 
-      g.setFont(titleFont);
-      g.setColor(Color.white);
-      g.drawString("Survival!", 250, 70);
+      graphics.setFont(titleFont);
+      graphics.setColor(Color.white);
+      graphics.drawString("Survival!", 250, 70);
 
-      g.setFont(boxText);
-      g.setColor(Color.white);
-      g.drawRect(315, 150, 200, 64);
-      g.drawString("Start", 385, 195);
+      graphics.setFont(boxText);
+      graphics.setColor(Color.white);
+      graphics.drawRect(315, 150, 200, 64);
+      graphics.drawString("Start", 385, 195);
 
-      g.setColor(Color.white);
-      g.drawRect(315, 250, 200, 64);
-      g.drawString("Help", 385, 295);
+      graphics.setColor(Color.white);
+      graphics.drawRect(315, 250, 200, 64);
+      graphics.drawString("Help", 385, 295);
 
-      g.setColor(Color.white);
-      g.drawRect(315, 350, 200, 64);
-      g.drawString("Quit", 385, 395);
+      graphics.setColor(Color.white);
+      graphics.drawRect(315, 350, 200, 64);
+      graphics.drawString("Quit", 385, 395);
 
     } else if (Game.gameState == STATE.Help) {
       Font titleFont = new Font("arial", Font.BOLD, 50);
       Font boxText = new Font("arial", Font.BOLD, 30);
       Font longText = new Font("arial", Font.BOLD, 15);
 
-      g.setFont(titleFont);
-      g.setColor(Color.white);
-      g.drawString("How to Play", 275, 70);
+      graphics.setFont(titleFont);
+      graphics.setColor(Color.white);
+      graphics.drawString("How to Play", 275, 70);
 
-      g.setFont(boxText);
-      g.setColor(Color.white);
-      g.drawRect(315, 350, 200, 64);
-      g.drawString("Back", 370, 395);
+      graphics.setFont(boxText);
+      graphics.setColor(Color.white);
+      graphics.drawRect(315, 350, 200, 64);
+      graphics.drawString("Back", 370, 395);
 
-      g.setFont(longText);
-      g.setColor(Color.white);
+      graphics.setFont(longText);
+      graphics.setColor(Color.white);
 
-      g.drawString("1) WASD helps you control the Player.", 290, 150);
-      g.drawString("2) Avoid enemies as much as possible.", 292, 185);
-      g.drawString("3) Press space bar to shoot bullets in random directions.", 292, 215);
-      g.drawString("Hit enemies to regain health.", 309, 230);
+      graphics.drawString("1) WASD helps you control the Player.", 290, 150);
+      graphics.drawString("2) Avoid enemies as much as possible.", 292, 185);
+      graphics.drawString("3) Press space bar to shoot bullets in random directions.", 292, 215);
+      graphics.drawString("Hit enemies to regain health.", 309, 230);
     } else if (Game.gameState == STATE.End) {
       Font titleFont = new Font("arial", Font.BOLD, 50);
       Font boxText = new Font("arial", Font.BOLD, 30);
 
-      g.setFont(titleFont);
-      g.setColor(Color.red);
-      g.drawString("Game Over!", 275, 70);
+      graphics.setFont(titleFont);
+      graphics.setColor(Color.red);
+      graphics.drawString("Game Over!", 275, 70);
 
-      g.setFont(boxText);
-      g.setColor(Color.white);
-      g.drawString("You lost with a score with: " + hud.getScore(), 200, 195);
+      graphics.setFont(boxText);
+      graphics.setColor(Color.white);
+      graphics.drawString("You lost with a score with: " + hud.getScore(), 200, 195);
 
-      g.setFont(boxText);
-      g.setColor(Color.white);
-      g.drawRect(315, 350, 200, 64);
-      g.drawString("Try Again	?", 330, 395);
+      graphics.setFont(boxText);
+      graphics.setColor(Color.white);
+      graphics.drawRect(315, 350, 200, 64);
+      graphics.drawString("Try Again	?", 330, 395);
     }
   }
 }

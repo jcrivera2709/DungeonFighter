@@ -143,20 +143,20 @@ public class Game extends Canvas implements Runnable {
       return;
     }
 
-    Graphics g = bs.getDrawGraphics();
+    Graphics graphics = bs.getDrawGraphics();
 
-    g.setColor(Color.black);
-    g.fillRect(0, 0, WIDTH, HEIGHT);
+    graphics.setColor(Color.black);
+    graphics.fillRect(0, 0, WIDTH, HEIGHT);
 
-    handler.render(g);
+    handler.render(graphics);
 
     if (gameState == STATE.Game) {
-      hud.render(g);
+      hud.render(graphics);
     } else if (gameState == STATE.Menu || gameState == STATE.Help || gameState == STATE.End) {
-      menu.render(g);
+      menu.render(graphics);
     }
 
-    g.dispose();
+    graphics.dispose();
     bs.show();
   }
 

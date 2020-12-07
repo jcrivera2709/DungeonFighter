@@ -42,9 +42,9 @@ public class SmartEnemy extends GameObject {
 	}
 
 
-	public void render(Graphics g) {
-		g.setColor(Color.blue);	
-		g.fillRect((int)x, (int)y, 16, 16);
+	public void render(Graphics graphics) {
+		graphics.setColor(Color.blue);
+		graphics.fillRect((int)x, (int)y, 16, 16);
 	}
 
 }

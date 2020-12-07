@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 import java.util.Random;
 
 public class Player extends GameObject{
-	Random r =  new Random();
+	Random random =  new Random();
 	Handler handler;
 	
 	public Player(int x, int y, ID id, Handler handler) {
@@ -48,9 +48,9 @@ public class Player extends GameObject{
 	}
 	
 
-	public void render(Graphics g) {
-		g.setColor(Color.white);
-		g.fillRect((int)x, (int)y, 32, 32);
+	public void render(Graphics graphics) {
+		graphics.setColor(Color.white);
+		graphics.fillRect((int)x, (int)y, 32, 32);
 	}
 
 
