@@ -14,7 +14,7 @@ public class Game extends Canvas implements Runnable {
   private Thread thread;
   private boolean running = false;
   private Handler handler;
-  private Random r;
+  private Random random;
   private HUD hud;
   private Spawner spawner;
   private Menu menu;
@@ -35,7 +35,7 @@ public class Game extends Canvas implements Runnable {
 
     hud = new HUD();
     spawner = new Spawner(handler, hud);
-    r = new Random();
+    random = new Random();
 
     menu = new Menu(this, handler, hud);
     this.addKeyListener(new KeyInput(handler));
@@ -46,7 +46,7 @@ public class Game extends Canvas implements Runnable {
     if (gameState == STATE.Menu) {
       for (int i = 0; i < maxParticles; i++) {
         handler.addObject(
-            new MenuParticle(r.nextInt(WIDTH), HEIGHT - 64, ID.MenuParticle, handler));
+            new MenuParticle(random.nextInt(WIDTH), HEIGHT - 64, ID.MenuParticle, handler));
       }
     }
   }
@@ -131,7 +131,8 @@ public class Game extends Canvas implements Runnable {
       // adds menu particles
       if (MenuParticle.getAmount() < maxParticles) {
         handler.addObject(
-            new MenuParticle(r.nextInt(Game.WIDTH), Game.HEIGHT - 40, ID.MenuParticle, handler));
+            new MenuParticle(
+                random.nextInt(Game.WIDTH), Game.HEIGHT - 40, ID.MenuParticle, handler));
       }
     }
   }
@@ -160,10 +161,14 @@ public class Game extends Canvas implements Runnable {
     bs.show();
   }
 
-  public static float clamp(float velX, float min, float max) {
-    if (velX >= max) return (velX = max);
-    else if (velX <= min) return (velX = min);
-    else return velX;
+  /**
+   * This method allows for a max and minimum value of the passed parameter. The next two parameters
+   * are the wanted max and minimum values.
+   */
+  public static float clamp(float valueToClamp, float minimum, float max) {
+    if (valueToClamp >= max) return max;
+    if (valueToClamp <= minimum) return minimum;
+    else return valueToClamp;
   }
 
   public static void main(String[] args) {
