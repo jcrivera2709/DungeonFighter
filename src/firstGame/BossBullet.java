@@ -6,13 +6,13 @@ import java.util.Random;
 
 public class BossBullet extends GameObject{
 	private Handler handler;
-	Random r = new Random();
+	Random random = new Random();
 	
 	public BossBullet(float x, float y, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
 		
-		velocityX = (r.nextInt(5 - -5) + -5);
+		velocityX = (random.nextInt(5 - -5) + -5);
 		velocityY = 5;
 	}
 

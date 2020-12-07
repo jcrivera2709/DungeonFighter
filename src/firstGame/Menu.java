@@ -12,7 +12,7 @@ public class Menu extends MouseAdapter {
   private Game game;
   private Handler handler;
   private HUD hud;
-  private Random random = new Random();
+  private Random random  = new Random();
 
   public Menu(Game game, Handler handler, HUD hud) {
     this.game = game;

@@ -1,20 +1,14 @@
 package firstGame;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.util.Random;
+import java.awt.*;
 
 public class Bullet extends GameObject {
 
   private Handler handler;
-  private KeyInput input;
-  Random r = new Random();
 
   public Bullet(float x, float y, ID id, KeyInput input, Handler handler) {
     super(x, y, id);
     this.handler = handler;
-    this.input = input;
 
     velocityY = -5;
   }
@@ -42,9 +36,7 @@ public class Bullet extends GameObject {
     }
   }
 
-  /**
-   * If bullet collides with enemy it will give health to the player.
-   */
+  /** If bullet collides with enemy it will give health to the player. */
   private void collision() {
     for (int i = 0; i < handler.object.size(); i++) {
       GameObject enemyObject = handler.object.get(i);
